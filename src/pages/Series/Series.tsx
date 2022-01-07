@@ -3,7 +3,7 @@ import React from "react"
 export const Series = () => {
     return (
         <>
-            Series
+            <span className='pageTitle'>Series</span>
         </>
     )
 }

@@ -3,7 +3,7 @@ import React from "react"
 export const Movies = () => {
     return (
         <>
-            Movies
+            <span className='pageTitle'>Movies</span>
         </>
     )
 }
