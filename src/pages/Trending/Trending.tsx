@@ -1,24 +1,25 @@
 import React, {useEffect, useState} from "react"
 import {SingleContent} from "../../components/SingleContent/SingleContent";
-import {api} from "../../api/api";
+import {api, IContent} from "../../api/api";
+import {useDispatch, useSelector} from "react-redux";
+import {AppRootStateType} from "../../redux/store";
+import {fetchTrendingTC} from "../../redux/reducer";
 
 export const Trending = () => {
 
-    const [content, setContent] = useState([])
+    const dispatch = useDispatch()
+    const results = useSelector<AppRootStateType, IContent[]>( state => state.app)
 
-
-    let response = null
     useEffect( ()=>{
-        response = api.fetchTrending()
-
+        dispatch(fetchTrendingTC())
     },[])
 
     return (
         <>
      <span className='pageTitle'>Trending</span>
             <div className='trending'>
-                {JSON.stringify(response)}
-                {/*{content  && content.map(c=> <SingleContent/>)}*/}
+                {JSON.stringify(results)}
+                {/*{content  && content.map(c=> <SingleContent />)}*/}
             </div>
         </>
     )
