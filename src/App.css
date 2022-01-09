@@ -1,4 +1,9 @@
-/* Указываем box sizing */
+* {
+    scroll-behavior: smooth;
+}
+
+
+
 *,
 *::before,
 *::after {
@@ -34,7 +39,7 @@ dd {
     margin: 0;
 }
 body {
-    /*height: 100%;*/
+
 }
 
 .wrapper {
@@ -49,4 +54,21 @@ body {
     color: white;
     padding: 70px;
     flex:1 1 auto
+}
+
+.pageTitle {
+    text-transform: uppercase;
+    display: flex;
+    justify-content: center;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 2vw;
+    padding: 4px;
+    border-radius: 50px;
+    color: white;
+}
+
+@media (max-width: 1000px) {
+    .pageTitle {
+        font-size: 6.4vw;
+    }
 }
