@@ -3,7 +3,7 @@
     flex-direction: column;
     padding: 5px;
     width: 200px;
-    margin: 5px 0;
+    margin: 20px 15px;
     /*background-color: #e50914;*/
     background-color: black;
     border-radius: 10px;
@@ -13,9 +13,8 @@
 }
 
 .media:hover {
-    /*background-color: white;*/
-    /*color: black;*/
     transform: scale(1.2)
+
 }
 .poster {
     border-radius: 10px

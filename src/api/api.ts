@@ -29,8 +29,8 @@ export type ResponseType = {
 }
 
 export const api = {
-    fetchTrending: async () => {
-        const response = await instance.get<ResponseType>(`3/trending/all/day?api_key=${process.env.REACT_APP_API_KEY}`)
+    fetchTrending: async (currentPage:number) => {
+        const response = await instance.get<ResponseType>(`3/trending/all/day?api_key=${process.env.REACT_APP_API_KEY}&page=${currentPage}`)
         return response.data.results
     }
 }

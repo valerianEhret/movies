@@ -1,18 +1,25 @@
 import React, {useEffect, useState} from "react"
-import {SingleContent} from "../../components/SingleContent/SingleContent";
-import {useDispatch, useSelector} from "react-redux";
-import {AppRootStateType} from "../../redux/store";
-import {fetchTrendingTC, InitialStateType} from "../../redux/reducer";
+import {SingleContent} from "../../components/SingleContent/SingleContent"
+import {useDispatch, useSelector} from "react-redux"
+import {AppRootStateType} from "../../redux/store"
+import {fetchTrendingTC, InitialStateType} from "../../redux/reducer"
 import s from './Trending.module.css'
+import {Pagination} from "../../components/Pagination/Pagination";
 
 export const Trending = () => {
+
+    const [currentPage, setCurrentPage] = useState(1)
 
     const dispatch = useDispatch()
     const {results} = useSelector<AppRootStateType, InitialStateType>( state => state.app)
 
+    const changeCurrentPage = (newPageNumber:number) => {
+        setCurrentPage(newPageNumber)
+    }
+
     useEffect( ()=>{
-        dispatch(fetchTrendingTC())
-    },[])
+        dispatch(fetchTrendingTC(currentPage))
+    },[currentPage])
 
     return (
         <>
@@ -29,6 +36,7 @@ export const Trending = () => {
                         vote_average={c.vote_average}
                     />)}
             </div>
+            <Pagination onPageChange = {changeCurrentPage}/>
         </>
     )
 }

@@ -31,9 +31,9 @@ export const appActions = {
     }
 }
 
-export const fetchTrendingTC = () => async (dispatch:Dispatch) => {
+export const fetchTrendingTC = (currentPage:number) => async (dispatch:Dispatch) => {
     try {
-        const response = await api.fetchTrending()
+        const response = await api.fetchTrending(currentPage)
         dispatch(appActions.setTrending(response))
 
     } catch (e) {
