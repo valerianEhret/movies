@@ -1,0 +1,31 @@
+.page {
+    width:24px;
+    height:24px;
+    border-radius: 2px;
+    color:white;
+    font-size: 12px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+
+}
+.page:hover {
+     background-color: purple;
+     color:white;
+ }
+
+
+.page:not(:last-child){
+    margin-right: 12px;
+}
+
+.page__active {
+    color:white;
+    background-color: darkblue;
+}
+
+.arrow_img {
+    width:10px;
+    height:10px;
+}

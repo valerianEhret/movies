@@ -22,7 +22,7 @@ export const Trending = () => {
     },[currentPage])
 
     return (
-        <>
+        <div className={s.trending_block}>
             <span className={'pageTitle'}>Trending</span>
             <div className={s.trending}>
                 {results.map((c)=>
@@ -36,7 +36,10 @@ export const Trending = () => {
                         vote_average={c.vote_average}
                     />)}
             </div>
-            <Pagination onPageChange = {changeCurrentPage}/>
-        </>
+            <div className={s.pagination}>
+                <Pagination onPageChange = {changeCurrentPage} currentPage={currentPage} portionSize={5}/>
+            </div>
+
+        </div>
     )
 }
