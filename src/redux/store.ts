@@ -1,9 +1,12 @@
 import {applyMiddleware, combineReducers, createStore} from "redux"
 import thunkMiddleware from 'redux-thunk'
-import {appReducer} from "./reducer"
+import {trendingReducer} from "./trendingReducer";
+import {moviesReducer} from "./moviesReducer";
+
 
 const rootReducer = combineReducers({
-    app: appReducer
+    trending: trendingReducer,
+    movies: moviesReducer
 })
 
 export const store = createStore(rootReducer, applyMiddleware(thunkMiddleware))

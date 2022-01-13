@@ -6,9 +6,10 @@ type PaginationPropsType = {
     onPageChange:(newPageNumber:number) => void
     currentPage:number
     portionSize:number
+    pagesCount: number
 }
 
-export const Pagination: React.FC<PaginationPropsType> = ({onPageChange, portionSize, currentPage}) => {
+export const Pagination: React.FC<PaginationPropsType> = ({onPageChange, portionSize, currentPage, pagesCount}) => {
 
 
 
@@ -18,7 +19,7 @@ export const Pagination: React.FC<PaginationPropsType> = ({onPageChange, portion
     const max = portionNumber * portionSize
 
 
-    const pagesCount = 1000
+
 
     const portionCount = Math.ceil(pagesCount / portionSize)
 
@@ -29,8 +30,7 @@ export const Pagination: React.FC<PaginationPropsType> = ({onPageChange, portion
 
     console.log(pages)
     return(
-        <>
-           <div style={{display:'flex'}}>
+           <div className={s.block}>
                <button
                    disabled={portionNumber<=1}
                    onClick={() => setPortionNumber(portionNumber - 1)}
@@ -53,9 +53,6 @@ export const Pagination: React.FC<PaginationPropsType> = ({onPageChange, portion
                    {'>'}
                </button>
            </div>
-
-
-        </>
         )
 
 }

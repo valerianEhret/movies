@@ -29,8 +29,12 @@ export type ResponseType = {
 }
 
 export const api = {
-    fetchTrending: async (currentPage:number) => {
+    fetchTrending: async (currentPage: number) => {
         const response = await instance.get<ResponseType>(`3/trending/all/day?api_key=${process.env.REACT_APP_API_KEY}&page=${currentPage}`)
-        return response.data.results
+        return response.data
+    },
+    fetchMovies: async (currentPage: number) => {
+        const response = await instance.get<ResponseType>(`3/discover/movie?api_key=${process.env.REACT_APP_API_KEY}&language=en-US&sort_by=popularity.desc&include_adult=false&include_video=false&page=${currentPage}&with_watch_monetization_types=flatrate`)
+        return response.data
     }
 }
