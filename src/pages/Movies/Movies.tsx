@@ -1,12 +1,11 @@
 import React, {useEffect, useState} from "react"
-import axios from "axios";
-import {api} from "../../api/api";
 import {fetchMoviesTC, InitialStateType} from "../../redux/moviesReducer";
 import {useDispatch, useSelector} from "react-redux";
 import {AppRootStateType} from "../../redux/store";
 import s from "../Trending/Trending.module.css";
 import {SingleContent} from "../../components/SingleContent/SingleContent";
 import {Pagination} from "../../components/Pagination/Pagination";
+import {Genres} from "../../components/Genres/Genres";
 
 
 export const Movies = () => {
@@ -18,6 +17,7 @@ export const Movies = () => {
         dispatch(fetchMoviesTC(newPageNumber))
     }
 
+   const [genres, setGenres] = useState([])
 
 
     useEffect(()=>{
@@ -27,6 +27,7 @@ export const Movies = () => {
     return (
         <div className={s.trending_block}>
             <span className={'pageTitle'}>Movies</span>
+            <Genres type={'movie'} genres={genres} setGenres={setGenres}/>
             <div className={s.trending}>
                 {results.map((c)=>
                     <SingleContent
