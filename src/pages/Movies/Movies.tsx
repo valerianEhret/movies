@@ -18,7 +18,7 @@ export const Movies = () => {
     }
 
    const [genres, setGenres] = useState([])
-
+    const [selectedGenres, setSelectedGenres] = useState([])
 
     useEffect(()=>{
         dispatch(fetchMoviesTC(page))
@@ -27,7 +27,7 @@ export const Movies = () => {
     return (
         <div className={s.trending_block}>
             <span className={'pageTitle'}>Movies</span>
-            <Genres type={'movie'} genres={genres} setGenres={setGenres}/>
+            <Genres type={'movie'} genres={genres} setGenres={setGenres} selectedGenres={selectedGenres} setSelectedGenres={setSelectedGenres}/>
             <div className={s.trending}>
                 {results.map((c)=>
                     <SingleContent

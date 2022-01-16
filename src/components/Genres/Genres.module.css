@@ -19,6 +19,10 @@
     color: black;
 }
 
+.tagSelected {
+    background-color: darkblue;
+}
+
 .tagContainer {
     padding: 5px;
     /*border: 1px solid white;*/
