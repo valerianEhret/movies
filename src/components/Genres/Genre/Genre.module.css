@@ -1,0 +1,22 @@
+.tag {
+    border: 2px solid white;
+    padding: 3px;
+    margin: 3px;
+    border-radius: 5px;
+    background-color: black;
+    cursor: pointer;
+}
+
+.tag:hover {
+    background-color: white;
+    color: black;
+}
+
+.tag i {
+    font-size: 16px;
+    margin-left:5px;
+}
+
+.tagSelected {
+    background-color: darkblue;
+}

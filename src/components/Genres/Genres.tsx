@@ -1,11 +1,12 @@
-import React, {useEffect} from "react";
-import axios from "axios";
+import React, {useEffect} from "react"
 import s from "./Genres.module.css"
-import {fetchMoviesTC} from "../../redux/moviesReducer";
-import {useDispatch} from "react-redux";
+import {fetchMoviesTC} from "../../redux/moviesReducer"
+import {useDispatch} from "react-redux"
+import {api} from "../../api/api";
+import {Genre} from "./Genre/Genre";
 
 
-type GenreType = {
+export type GenreType = {
     id: number
     name: string
 }
@@ -16,6 +17,7 @@ type GenresPropsType = {
     genres: Array<GenreType>
     setGenres: Function
     type: string
+    genreForURL: string
 }
 
 export const Genres: React.FC<GenresPropsType> = ({
@@ -24,7 +26,7 @@ export const Genres: React.FC<GenresPropsType> = ({
                                                       genres,
                                                       setGenres,
                                                       type,
-                                                      // setPage
+                                                      genreForURL
                                                   }) => {
 
 
@@ -33,19 +35,19 @@ export const Genres: React.FC<GenresPropsType> = ({
     const handleAdd = (genre: GenreType) => {
         setSelectedGenres([...selectedGenres, genre])
         setGenres(genres.filter(g => g.id !== genre.id))
-        dispatch(fetchMoviesTC(1))
+        dispatch(fetchMoviesTC(1, genreForURL))
     }
 
     const handleDelete = (genre: GenreType) => {
         setSelectedGenres(selectedGenres.filter(g => g.id !== genre.id))
         setGenres([...genres, genre])
-        dispatch(fetchMoviesTC(1))
+        dispatch(fetchMoviesTC(1, genreForURL))
     }
 
     const fetchGenres = async () => {
-        const response = await axios.get(`https://api.themoviedb.org/3/genre/${type}/list?api_key=${process.env.REACT_APP_API_KEY}&language=en-US`)
+        const response = await api.fetchGenres(type)
 
-        setGenres(response.data.genres)
+        setGenres(response.genres)
     }
 
     useEffect(() => {
@@ -57,9 +59,6 @@ export const Genres: React.FC<GenresPropsType> = ({
 
     }, [])
 
-    const onGenreChange = (id: number) => {
-        console.log(id)
-    }
 
     return (
         <div className={s.container}>
@@ -78,23 +77,3 @@ export const Genres: React.FC<GenresPropsType> = ({
 }
 
 
-type GenrePropsType = {
-    genre: GenreType
-    onClickGenre: (genre: GenreType) => void
-    className?: string
-
-}
-
-const Genre: React.FC<GenrePropsType> = ({genre, onClickGenre, className, children}) => {
-
-    const finalClassName = `${s.tag} ${className}`
-
-    return (
-        <div className={finalClassName} onClick={() => {
-            onClickGenre(genre)
-        }}>
-            <span>{genre.name}</span>
-            {children}
-        </div>
-    )
-}

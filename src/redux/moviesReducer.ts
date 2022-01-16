@@ -37,9 +37,9 @@ export const appActions = {
     }
 }
 
-export const fetchMoviesTC = (currentPage:number) => async (dispatch:Dispatch) => {
+export const fetchMoviesTC = (currentPage:number, genreForURL:string) => async (dispatch:Dispatch) => {
     try {
-        const response = await api.fetchMovies(currentPage)
+        const response = await api.fetchMovies(currentPage, genreForURL)
         dispatch(appActions.setMovies(response))
 
     } catch (e) {

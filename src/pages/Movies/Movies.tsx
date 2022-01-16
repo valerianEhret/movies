@@ -6,6 +6,7 @@ import s from "../Trending/Trending.module.css";
 import {SingleContent} from "../../components/SingleContent/SingleContent";
 import {Pagination} from "../../components/Pagination/Pagination";
 import {Genres} from "../../components/Genres/Genres";
+import {useGenres} from "../../hooks/useGenres";
 
 
 export const Movies = () => {
@@ -14,20 +15,29 @@ export const Movies = () => {
     const {results, page, total_pages} = useSelector<AppRootStateType, InitialStateType>(state=>state.movies)
 
     const changeCurrentPage = (newPageNumber:number) => {
-        dispatch(fetchMoviesTC(newPageNumber))
+        dispatch(fetchMoviesTC(newPageNumber, genreForURL))
     }
 
    const [genres, setGenres] = useState([])
     const [selectedGenres, setSelectedGenres] = useState([])
 
+    const genreForURL = useGenres(selectedGenres)
+
     useEffect(()=>{
-        dispatch(fetchMoviesTC(page))
-    },[])
+        dispatch(fetchMoviesTC(page, genreForURL))
+    },[genreForURL])
 
     return (
         <div className={s.trending_block}>
             <span className={'pageTitle'}>Movies</span>
-            <Genres type={'movie'} genres={genres} setGenres={setGenres} selectedGenres={selectedGenres} setSelectedGenres={setSelectedGenres}/>
+            <Genres
+                    type={'movie'}
+                    genres={genres}
+                    setGenres={setGenres}
+                    selectedGenres={selectedGenres}
+                    setSelectedGenres={setSelectedGenres}
+                    genreForURL={genreForURL}
+            />
             <div className={s.trending}>
                 {results.map((c)=>
                     <SingleContent

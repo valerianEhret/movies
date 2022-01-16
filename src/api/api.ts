@@ -1,4 +1,5 @@
 import {instance} from "./axios";
+import {GenreType} from "../components/Genres/Genres";
 
 
 export type IContent = {
@@ -28,13 +29,21 @@ export type ResponseType = {
     total_results: number
 }
 
+type GenresType = {
+    genres: Array<GenreType>
+}
+
 export const api = {
     fetchTrending: async (currentPage: number) => {
-        const response = await instance.get<ResponseType>(`3/trending/all/day?api_key=${process.env.REACT_APP_API_KEY}&page=${currentPage}`)
+        const response = await instance.get<ResponseType>(`trending/all/day?api_key=${process.env.REACT_APP_API_KEY}&page=${currentPage}`)
         return response.data
     },
-    fetchMovies: async (currentPage: number) => {
-        const response = await instance.get<ResponseType>(`3/discover/movie?api_key=${process.env.REACT_APP_API_KEY}&language=en-US&sort_by=popularity.desc&include_adult=false&include_video=false&page=${currentPage}&with_watch_monetization_types=flatrate`)
+    fetchMovies: async (currentPage: number, genreForURL:string) => {
+        const response = await instance.get<ResponseType>(`discover/movie?api_key=${process.env.REACT_APP_API_KEY}&language=en-US&sort_by=popularity.desc&include_adult=false&include_video=false&page=${currentPage}&with_watch_monetization_types=flatrate&with_genres=${genreForURL}`)
+        return response.data
+    },
+    fetchGenres: async (type:string) => {
+        const response = await instance.get<GenresType>(`genre/${type}/list?api_key=${process.env.REACT_APP_API_KEY}&language=en-US`)
         return response.data
     }
 }

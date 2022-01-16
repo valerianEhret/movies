@@ -5,19 +5,19 @@
     margin:40px;
 }
 
-.tag {
-    border: 2px solid white;
-    padding: 3px;
-    margin: 3px;
-    border-radius: 5px;
-    background-color: black;
-    cursor: pointer;
-}
+/*.tag {*/
+/*    border: 2px solid white;*/
+/*    padding: 3px;*/
+/*    margin: 3px;*/
+/*    border-radius: 5px;*/
+/*    background-color: black;*/
+/*    cursor: pointer;*/
+/*}*/
 
-.tag:hover {
-    background-color: white;
-    color: black;
-}
+/*.tag:hover {*/
+/*    background-color: white;*/
+/*    color: black;*/
+/*}*/
 
 .tagSelected {
     background-color: darkblue;
@@ -33,10 +33,10 @@
 
 }
 
-.tag i {
-    font-size: 16px;
-    margin-left:5px;
-}
+/*.tag i {*/
+/*    font-size: 16px;*/
+/*    margin-left:5px;*/
+/*}*/
 
 .genre__active {
     color: white;
