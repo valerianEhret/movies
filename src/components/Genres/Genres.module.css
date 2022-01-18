@@ -5,27 +5,8 @@
     margin:40px;
 }
 
-/*.tag {*/
-/*    border: 2px solid white;*/
-/*    padding: 3px;*/
-/*    margin: 3px;*/
-/*    border-radius: 5px;*/
-/*    background-color: black;*/
-/*    cursor: pointer;*/
-/*}*/
-
-/*.tag:hover {*/
-/*    background-color: white;*/
-/*    color: black;*/
-/*}*/
-
-.tagSelected {
-    background-color: darkblue;
-}
-
 .tagContainer {
     padding: 5px;
-    /*border: 1px solid white;*/
     margin: 5px;
     display: flex;
     align-items: center;
@@ -33,12 +14,9 @@
 
 }
 
-/*.tag i {*/
-/*    font-size: 16px;*/
-/*    margin-left:5px;*/
-/*}*/
 
 .genre__active {
     color: white;
     background-color: darkblue;
 }
+

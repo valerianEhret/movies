@@ -1,9 +1,14 @@
-import React from "react"
+import React  from "react"
+import {VideoContent} from "../../components/VideoContent/VideoContent";
+
 
 export const Series = () => {
+
+
+
     return (
         <>
-            <span className='pageTitle'>Series</span>
+        <VideoContent type={'tv'} title={'TV Series'}/>
         </>
     )
 }

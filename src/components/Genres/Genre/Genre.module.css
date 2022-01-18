@@ -3,7 +3,6 @@
     padding: 3px;
     margin: 3px;
     border-radius: 5px;
-    background-color: black;
     cursor: pointer;
 }
 
@@ -17,6 +16,4 @@
     margin-left:5px;
 }
 
-.tagSelected {
-    background-color: darkblue;
-}
+

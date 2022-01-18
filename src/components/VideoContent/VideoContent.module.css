@@ -1,0 +1,28 @@
+.page_title {
+    text-transform: uppercase;
+    display: flex;
+    justify-content: center;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 2vw;
+    padding: 4px;
+    border-radius: 50px;
+    color: white;
+}
+
+@media (max-width: 1000px) {
+    .pageTitle {
+        font-size: 6.4vw;
+    }
+}
+
+.video_content_block {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.video_content {
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+}

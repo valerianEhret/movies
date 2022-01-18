@@ -5,12 +5,12 @@ import {GenreType} from "../Genres";
 type GenrePropsType = {
     genre: GenreType
     onClickGenre: (genre: GenreType) => void
-    className?: string
+    className: string
 
 }
 
 export const Genre: React.FC<GenrePropsType> = ({genre, onClickGenre, className, children}) => {
-
+    debugger
     const finalClassName = `${s.tag} ${className}`
 
     return (
