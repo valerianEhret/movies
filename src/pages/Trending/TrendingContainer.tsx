@@ -2,15 +2,15 @@ import React, {useEffect} from "react"
 import {VideoContent} from "../../components/VideoContent/VideoContent"
 import {useDispatch, useSelector} from "react-redux"
 import {AppRootStateType} from "../../redux/store"
-import {InitialStateType} from "../../redux/moviesReducer"
+import {fetchTrendingTC, InitialStateType} from "../../redux/moviesReducer"
 import s from "./TrendingContainer.module.css"
 import {Pagination} from "../../components/Pagination/Pagination"
-import {fetchTrendingTC} from "../../redux/trendingReducer";
+
 
 export const TrendingContainer = () => {
 
     const dispatch = useDispatch()
-    const {page, results, total_pages} = useSelector<AppRootStateType, InitialStateType>(state=>state.trending)
+    const {page, results, total_pages} = useSelector<AppRootStateType, InitialStateType>(state=>state.movies)
 
     const changeCurrentPage = (newPageNumber:number) => {
         dispatch(fetchTrendingTC(newPageNumber))

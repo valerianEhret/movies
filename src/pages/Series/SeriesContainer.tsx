@@ -1,4 +1,3 @@
-import React, {useEffect, useState} from "react"
 import {VideoContent} from "../../components/VideoContent/VideoContent"
 import {Genres} from "../../components/Genres/Genres"
 import {useDispatch, useSelector} from "react-redux"
@@ -7,10 +6,11 @@ import {fetchVideoContentTC, InitialStateType} from "../../redux/moviesReducer"
 import {useGenres} from "../../hooks/useGenres"
 import s from "../../components/VideoContent/VideoContent.module.css"
 import {Pagination} from "../../components/Pagination/Pagination"
+import {useEffect, useState} from "react";
 
-export const MoviesContainer = () => {
+export const SeriesContainer = () => {
 
-    const type = 'movie'
+    const type = 'tv'
 
     const dispatch = useDispatch()
     const {results, page, total_pages} = useSelector<AppRootStateType, InitialStateType>(state=>state.movies)

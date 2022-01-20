@@ -1,8 +1,7 @@
-import {Trending} from "./pages/Trending/Trending"
-import {MoviesPage} from "./pages/Movies/MoviesPage";
-import {Series} from "./pages/Series/Series";
-import {Search} from "./pages/Search/Search";
-import {TrendingPage} from "./pages/Trending/TrendingPage";
+import {MoviesPage} from "./pages/Movies/MoviesPage"
+import {Series} from "./pages/Series/Series"
+import {Search} from "./pages/Search/Search"
+import {TrendingPage} from "./pages/Trending/TrendingPage"
 
 export enum RouterNames {
     TRENDING = '/trending',
@@ -22,7 +21,7 @@ export const routes: IRoute[] = [
     {
         path: RouterNames.START,
         exact: true,
-        component:Trending
+        component:TrendingPage
     },
     {
         path: RouterNames.TRENDING,

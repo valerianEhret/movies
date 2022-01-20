@@ -21,7 +21,7 @@ const initialState = {
 
 export const moviesReducer = (state= initialState, action: ActionsType):InitialStateType => {
     switch (action.type) {
-        case 'SET_MOVIES' :
+        case 'SET_VIDEO_CONTENT' :
             return {...state, results: action.payload.results, page:action.payload.page, total_pages:action.payload.total_pages, total_results: action.payload.total_results}
         default:
             return state
@@ -29,26 +29,31 @@ export const moviesReducer = (state= initialState, action: ActionsType):InitialS
 }
 
 export const appActions = {
-    setMovies: (payload:InitialStateType ) => {
+    setVideoContent: (payload:InitialStateType ) => {
         return {
-            type: 'SET_MOVIES',
+            type: 'SET_VIDEO_CONTENT',
             payload
         } as const
     }
 }
 
-export const fetchMoviesTC = (currentPage:number, genreForURL:string, type:string) => async (dispatch:Dispatch) => {
+export const fetchVideoContentTC = (currentPage:number, genreForURL:string, type:string) => async (dispatch:Dispatch) => {
     try {
         const response = await api.fetchVideoContent(currentPage, genreForURL, type )
-        dispatch(appActions.setMovies(response))
+        dispatch(appActions.setVideoContent(response))
 
     } catch (e) {
         console.log(e)
     }
 }
-//
-// export const fetchGenresTC = (type:string) => async (dispatch:Dispatch) => {
-//     try {
-//         const response = await api.fetchGenres(type)
-//     }
-// }
+
+export const fetchTrendingTC = (currentPage:number) => async (dispatch:Dispatch) => {
+    try {
+        const response = await api.fetchTrending(currentPage)
+        dispatch(appActions.setVideoContent(response))
+
+    } catch (e) {
+        console.log(e)
+    }
+}
+

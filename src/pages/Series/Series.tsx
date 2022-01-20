@@ -1,11 +1,11 @@
-import React  from "react"
-import {VideoContent} from "../../components/VideoContent/VideoContent";
+import React from "react"
+import {SeriesContainer} from "./SeriesContainer";
 
 
 export const Series = () => {
     return (
         <>
-        {/*<VideoContent type={'tv'} title={'TV Series'}/>*/}
+            <SeriesContainer/>
         </>
     )
 }

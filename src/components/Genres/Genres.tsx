@@ -1,6 +1,6 @@
 import React, {useEffect, useState} from "react"
 import s from "./Genres.module.css"
-import {fetchMoviesTC} from "../../redux/moviesReducer"
+import {fetchVideoContentTC} from "../../redux/moviesReducer"
 import {useDispatch, useSelector} from "react-redux"
 import {Genre} from "./Genre/Genre";
 import {appActions, fetchGenresTC, InitialStateType} from "../../redux/genresReducer";
@@ -34,13 +34,13 @@ export const Genres: React.FC<GenresPropsType> = ({
     const handleAdd = (genre: GenreType) => {
         setSelectedGenres([...selectedGenres, genre])
         dispatch(appActions.setGenres(genres.filter(g => g.id !== genre.id)))
-        dispatch(fetchMoviesTC(1, genreForURL, type))
+        dispatch(fetchVideoContentTC(1, genreForURL, type))
     }
 
     const handleDelete = (genre: GenreType) => {
         setSelectedGenres(selectedGenres.filter(g => g.id !== genre.id))
         dispatch(appActions.setGenres([...genres, genre]))
-        dispatch(fetchMoviesTC(1, genreForURL, type))
+        dispatch(fetchVideoContentTC(1, genreForURL, type))
     }
 
 
