@@ -1,9 +1,10 @@
-import React, {useEffect} from "react"
+import React, {useEffect, useState} from "react"
 import s from "./Genres.module.css"
 import {fetchMoviesTC} from "../../redux/moviesReducer"
-import {useDispatch} from "react-redux"
-import {api} from "../../api/api";
+import {useDispatch, useSelector} from "react-redux"
 import {Genre} from "./Genre/Genre";
+import {appActions, fetchGenresTC, InitialStateType} from "../../redux/genresReducer";
+import {AppRootStateType} from "../../redux/store";
 
 
 
@@ -15,8 +16,6 @@ export type GenreType = {
 type GenresPropsType = {
     selectedGenres: Array<GenreType>
     setSelectedGenres: Function
-    genres: Array<GenreType>
-    setGenres: Function
     type: string
     genreForURL: string
 }
@@ -24,40 +23,29 @@ type GenresPropsType = {
 export const Genres: React.FC<GenresPropsType> = ({
                                                       selectedGenres,
                                                       setSelectedGenres,
-                                                      genres,
-                                                      setGenres,
                                                       type,
                                                       genreForURL
                                                   }) => {
 
 
     const dispatch = useDispatch()
+    const {genres} = useSelector<AppRootStateType, InitialStateType>(state=>state.genres)
 
     const handleAdd = (genre: GenreType) => {
         setSelectedGenres([...selectedGenres, genre])
-        setGenres(genres.filter(g => g.id !== genre.id))
+        dispatch(appActions.setGenres(genres.filter(g => g.id !== genre.id)))
         dispatch(fetchMoviesTC(1, genreForURL, type))
     }
 
     const handleDelete = (genre: GenreType) => {
         setSelectedGenres(selectedGenres.filter(g => g.id !== genre.id))
-        setGenres([...genres, genre])
+        dispatch(appActions.setGenres([...genres, genre]))
         dispatch(fetchMoviesTC(1, genreForURL, type))
     }
 
-    const fetchGenres = async () => {
-        const response = await api.fetchGenres(type)
-
-        setGenres(response.genres)
-    }
 
     useEffect(() => {
-        fetchGenres()
-
-        return () => {
-            setGenres([])
-        }
-
+        dispatch(fetchGenresTC(type))
     }, [])
 
 

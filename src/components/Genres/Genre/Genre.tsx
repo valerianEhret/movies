@@ -1,6 +1,6 @@
-import React from "react";
-import s from "./Genre.module.css";
-import {GenreType} from "../Genres";
+import React from "react"
+import s from "./Genre.module.css"
+import {GenreType} from "../Genres"
 
 type GenrePropsType = {
     genre: GenreType

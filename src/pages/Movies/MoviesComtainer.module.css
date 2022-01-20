@@ -1,0 +1,5 @@
+.video_content_block {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
