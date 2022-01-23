@@ -1,4 +1,4 @@
-import React, {ChangeEvent, useState} from "react"
+import React, {ChangeEvent, useEffect, useState} from "react"
 import s from './Search.module.css'
 import {useDispatch, useSelector} from "react-redux";
 import {fetchSearchTC, fetchVideoContentTC, InitialStateType} from "../../redux/moviesReducer";
@@ -37,30 +37,45 @@ export const Search = () => {
     }
 
 
-   const onSearch = () => {
+   // const onSearch = () => {
+   //     dispatch(fetchSearchTC(type, searchText, 1 ))
+   //
+   // }
+
+
+   useEffect(  ()=>{
+       window.scroll(0,0)
        dispatch(fetchSearchTC(type, searchText, 1 ))
-   }
+   }, [type, page, searchText])
 
 
     return (
         <div className={s.block}>
-            <span className='pageTitle'>Search</span>
-            <input value={searchText}   onChange={onChangeClick}/>
-            <button  className={s.btn} onClick={onSearch}>
-                Search
-                {/*<span className="material-icons">search</span>*/}
-            </button>
+            <input value={searchText}   onChange={onChangeClick} placeholder='SEARCH'/>
+            {/*<button  className={s.btn}*/}
+            {/*         onClick={onSearch}*/}
+            {/*>*/}
+            {/*    Search*/}
+            {/*    /!*<span className="material-icons">search</span>*!/*/}
+            {/*</button>*/}
 
             <a href="#" className="btn-order" onClick={onClickMovies}>Search movies</a>
             <a href="#" className="btn-order" onClick={onClickSeries}>Search TV Series</a>
             {/*<button className={s.btn} onClick={onClickMovies}>Search movies</button>*/}
             {/*<button className={s.btn} onClick={onClickSeries}>Search TV Series</button>*/}
-            <VideoContent results={results}/>
-            <Pagination
-                onPageChange = {changeCurrentPage}
-                currentPage={page}
-                portionSize={5}
-                pagesCount={total_pages}/>
+            {searchText  && results.length === 0 ? <h2>Movies Not Found </h2> :
+                <div>
+                    <VideoContent results={results}/>
+                    { results.length !== 0 && <Pagination
+                        onPageChange = {changeCurrentPage}
+                        currentPage={page}
+                        portionSize={5}
+                        pagesCount={total_pages}/>}
+                </div>
+
+            }
+
+
         </div>
     )
 }
