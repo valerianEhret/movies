@@ -10,9 +10,7 @@ type GenrePropsType = {
 }
 
 export const Genre: React.FC<GenrePropsType> = ({genre, onClickGenre, className, children}) => {
-    debugger
     const finalClassName = `${s.tag} ${className}`
-
     return (
         <div className={finalClassName} onClick={() => {
             onClickGenre(genre)

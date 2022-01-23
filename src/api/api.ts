@@ -1,5 +1,5 @@
-import {instance} from "./axios";
-import {GenreType} from "../components/Genres/Genres";
+import {instance} from "./axios"
+import {GenreType} from "../components/Genres/Genres"
 
 
 export type IContent = {
@@ -39,6 +39,7 @@ export const api = {
         return response.data
     },
     fetchVideoContent: async (currentPage: number, genreForURL:string, type:string) => {
+        debugger
         const response = await instance.get<ResponseType>(`discover/${type}?api_key=${process.env.REACT_APP_API_KEY}&language=en-US&sort_by=popularity.desc&include_adult=false&include_video=false&page=${currentPage}&with_watch_monetization_types=flatrate&with_genres=${genreForURL}`)
         return response.data
     },
@@ -46,4 +47,8 @@ export const api = {
         const response = await instance.get<GenresType>(`genre/${type}/list?api_key=${process.env.REACT_APP_API_KEY}&language=en-US`)
         return response.data
     },
+    fetchSearch: async (type: string, searchText:string, page:number) => {
+        const response = await instance.get<ResponseType>(`search/${type}?api_key=${process.env.REACT_APP_API_KEY}&language=en-US&query=${searchText}&page=${page}&include_adult=false`)
+        return response.data
+    }
 }

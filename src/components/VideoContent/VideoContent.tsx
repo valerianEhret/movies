@@ -1,21 +1,17 @@
-import React from "react";
-import s from "./VideoContent.module.css";
-import {SingleContent} from "../SingleContent/SingleContent";
-import {IContent} from "../../api/api";
+import React from "react"
+import s from "./VideoContent.module.css"
+import {SingleContent} from "../SingleContent/SingleContent"
+import {IContent} from "../../api/api"
 
 type VideoContentPropsType = {
-    // type: string
-    // title: string
     results:IContent[]
-    // pagesCount:number
-    // page:  number
+
 }
 
 export const VideoContent: React.FC<VideoContentPropsType> = ({results}) => {
 
     return(
         <div>
-            {/*<span className={s.page_title}>{title}</span>*/}
             <div className={s.video_content}>
                 {results.map((c)=>
                     <SingleContent
@@ -24,7 +20,7 @@ export const VideoContent: React.FC<VideoContentPropsType> = ({results}) => {
                         id = {c.id}
                         title = {c.title || c.name}
                         date={c.release_date || c.first_air_date}
-                        media_type={'movie'}
+                        media_type={c.media_type}
                         vote_average={c.vote_average}
                     />)}
             </div>

@@ -1,0 +1,22 @@
+.block {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.btn {
+    padding: 5px;
+    margin: 5px;
+}
+
+.btn_order {
+    display: inline-block;
+    width: 165px;
+    height: 47px;
+    border: 2px solid #31363c;
+    border-radius: 2px;
+    line-height: 47px;
+    text-align: center;
+    text-decoration: none;
+    color: #31363c;
+}

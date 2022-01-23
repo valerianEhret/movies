@@ -1,10 +1,10 @@
-import React, {useEffect, useState} from "react"
+import React, {useEffect} from "react"
 import s from "./Genres.module.css"
 import {fetchVideoContentTC} from "../../redux/moviesReducer"
 import {useDispatch, useSelector} from "react-redux"
 import {Genre} from "./Genre/Genre";
-import {appActions, fetchGenresTC, InitialStateType} from "../../redux/genresReducer";
-import {AppRootStateType} from "../../redux/store";
+import {appActions, fetchGenresTC, InitialStateType} from "../../redux/genresReducer"
+import {AppRootStateType} from "../../redux/store"
 
 
 

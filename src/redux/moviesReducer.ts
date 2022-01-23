@@ -57,3 +57,15 @@ export const fetchTrendingTC = (currentPage:number) => async (dispatch:Dispatch)
     }
 }
 
+export const fetchSearchTC = (type: string, searchText:string, page:number ) => async (dispatch:Dispatch) => {
+    debugger
+    try {
+        const response = await api.fetchSearch(type, searchText, page)
+        dispatch(appActions.setVideoContent(response))
+
+    } catch (e) {
+        console.log(e)
+    }
+}
+
+

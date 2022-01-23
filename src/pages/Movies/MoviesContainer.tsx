@@ -41,7 +41,8 @@ export const MoviesContainer = () => {
             <VideoContent results={results}/>
             <Pagination
                 onPageChange = {changeCurrentPage}
-                currentPage={page} portionSize={5}
+                currentPage={page}
+                portionSize={5}
                 pagesCount={total_pages}/>
         </div>
     )

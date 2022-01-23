@@ -1,5 +1,5 @@
-import React from "react";
-import {GenreType} from "../components/Genres/Genres";
+import React from "react"
+import {GenreType} from "../components/Genres/Genres"
 
 
 export const useGenres = (selectedGenres: Array<GenreType>) => {
