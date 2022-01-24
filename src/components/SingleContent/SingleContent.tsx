@@ -19,6 +19,7 @@ export type SingleContentPropsType = {
     video?: boolean
     vote_count?: number
     popularity?: number
+    setModal?:()=>void
 }
 
 
@@ -28,10 +29,11 @@ export const SingleContent: React.FC<SingleContentPropsType> = ({
                                                                     title,
                                                                     date,
                                                                     media_type,
-                                                                    vote_average
+                                                                    vote_average,
+                                                                    setModal
                                                                 }) => {
     return (
-        <div className={s.media}>
+        <div className={s.media} onClick={ setModal}>
             <div className={s.badge}>
                 <span>{vote_average}</span>
             </div>

@@ -7,6 +7,7 @@ import {fetchVideoContentTC, InitialStateType} from "../../redux/moviesReducer"
 import {useGenres} from "../../hooks/useGenres"
 import s from "../../components/VideoContent/VideoContent.module.css"
 import {Pagination} from "../../components/Pagination/Pagination"
+import {ContentModal} from "../../components/ContentModal/ContentModal";
 
 export const MoviesContainer = () => {
 
@@ -18,6 +19,13 @@ export const MoviesContainer = () => {
     const changeCurrentPage = (newPageNumber:number) => {
         dispatch(fetchVideoContentTC(newPageNumber, genreForURL, type))
     }
+
+    const [modalActive, setModalActive] = useState<boolean>(false);
+
+    const activateModal = () => {
+        setModalActive(true)
+    }
+
 
 
     const [selectedGenres, setSelectedGenres] = useState([])
@@ -38,7 +46,8 @@ export const MoviesContainer = () => {
                 setSelectedGenres={setSelectedGenres}
                 genreForURL={genreForURL}
             />
-            <VideoContent results={results}/>
+            <VideoContent results={results} setModal={activateModal}/>
+            <ContentModal active={modalActive} setActive={setModalActive}>TEST</ContentModal>
             <Pagination
                 onPageChange = {changeCurrentPage}
                 currentPage={page}

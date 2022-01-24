@@ -5,10 +5,11 @@ import {IContent} from "../../api/api"
 
 type VideoContentPropsType = {
     results:IContent[]
+    setModal?: ()=>void
 
 }
 
-export const VideoContent: React.FC<VideoContentPropsType> = ({results}) => {
+export const VideoContent: React.FC<VideoContentPropsType> = ({results, setModal}) => {
 
     return(
         <div>
@@ -22,6 +23,7 @@ export const VideoContent: React.FC<VideoContentPropsType> = ({results}) => {
                         date={c.release_date || c.first_air_date}
                         media_type={c.media_type}
                         vote_average={c.vote_average}
+                        setModal={ setModal}
                     />)}
             </div>
         </div>

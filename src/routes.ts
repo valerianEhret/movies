@@ -2,13 +2,15 @@ import {MoviesPage} from "./pages/Movies/MoviesPage"
 import {Series} from "./pages/Series/Series"
 import {Search} from "./pages/Search/Search"
 import {TrendingPage} from "./pages/Trending/TrendingPage"
+import {Test} from "./components/Test/Test";
 
 export enum RouterNames {
     TRENDING = '/trending',
     MOVIES = '/movies',
     SERIES = '/series',
     SEARCH = '/search',
-    START = '/'
+    START = '/',
+    TEST= '/test'
 }
 
 interface IRoute {
@@ -42,5 +44,10 @@ export const routes: IRoute[] = [
         path: RouterNames.SEARCH,
         exact: true,
         component:Search
+    },
+    {
+        path: RouterNames.TEST,
+        exact: true,
+        component:Test
     },
 ]
