@@ -19,7 +19,7 @@ export type SingleContentPropsType = {
     video?: boolean
     vote_count?: number
     popularity?: number
-    setModal?:()=>void
+    setModal?:(id:number)=>void
 }
 
 
@@ -33,17 +33,19 @@ export const SingleContent: React.FC<SingleContentPropsType> = ({
                                                                     setModal
                                                                 }) => {
     return (
-        <div className={s.media} onClick={ setModal}>
-            <div className={s.badge}>
-                <span>{vote_average}</span>
-            </div>
-            <img className={s.poster} src={poster ? `${img_300}/${poster}` : unavailable} alt="title"/>
-            <b className={s.title}>{title}</b>
-            <div className={s.subTitles}>
-                <span className={s.subTitle}>{media_type === 'tv' ? 'TV Series' : 'Movie'}</span>
-                <span className={s.subTitle}>{date}</span>
+
+            <div className={s.media} onClick={ ()=> setModal ? setModal(id) : ''}>
+                <div className={s.badge}>
+                    <span>{vote_average}</span>
+                </div>
+                <img className={s.poster} src={poster ? `${img_300}/${poster}` : unavailable} alt="title"/>
+                <b className={s.title}>{title}</b>
+                <div className={s.subTitles}>
+                    <span className={s.subTitle}>{media_type === 'tv' ? 'TV Series' : 'Movie'}</span>
+                    <span className={s.subTitle}>{date}</span>
+                </div>
+
             </div>
 
-        </div>
     )
 }

@@ -17,12 +17,12 @@
 }
 
 .modal.active {
-    opacity: 0.9;
+    opacity: 0.95;
     pointer-events: all;
 }
 
 .modalContent {
-    width: 30vw;
+    width: 40vw;
     height: 80vw;
     padding: 20px;
     /*border-radius: 12px;*/

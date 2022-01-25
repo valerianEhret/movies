@@ -3,3 +3,7 @@
     flex-direction: column;
     align-items: center;
 }
+
+.content_modal_title {
+    color: #e50914;
+}

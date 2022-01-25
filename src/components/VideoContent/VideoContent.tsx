@@ -5,7 +5,7 @@ import {IContent} from "../../api/api"
 
 type VideoContentPropsType = {
     results:IContent[]
-    setModal?: ()=>void
+    setModal?: (id:number)=>void
 
 }
 

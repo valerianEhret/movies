@@ -22,7 +22,7 @@ const initialState = {
 export const moviesReducer = (state= initialState, action: ActionsType):InitialStateType => {
     switch (action.type) {
         case 'SET_VIDEO_CONTENT' :
-            return {...state, results: action.payload.results, page:action.payload.page, total_pages:action.payload.total_pages, total_results: action.payload.total_results}
+            return {...state, ...action.payload}
         default:
             return state
     }

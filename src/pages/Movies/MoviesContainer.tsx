@@ -8,6 +8,10 @@ import {useGenres} from "../../hooks/useGenres"
 import s from "../../components/VideoContent/VideoContent.module.css"
 import {Pagination} from "../../components/Pagination/Pagination"
 import {ContentModal} from "../../components/ContentModal/ContentModal";
+import {ContentDescription} from "../../components/ContentDescription/ContentDescription";
+import {fetchDataTC} from "../../redux/contentReducer";
+import {DataType} from "../../api/api";
+import {img_500, unavailable, unavailableLandscape} from "../../config/config";
 
 export const MoviesContainer = () => {
 
@@ -22,10 +26,12 @@ export const MoviesContainer = () => {
 
     const [modalActive, setModalActive] = useState<boolean>(false);
 
-    const activateModal = () => {
+    const activateModal = (id:number) => {
         setModalActive(true)
+        dispatch(fetchDataTC(type, id))
     }
 
+    const {poster_path, backdrop_path, title, name, release_date, firs_air_date, tagline, overview} = useSelector<AppRootStateType, DataType>(state=> state.content)
 
 
     const [selectedGenres, setSelectedGenres] = useState([])
@@ -47,7 +53,27 @@ export const MoviesContainer = () => {
                 genreForURL={genreForURL}
             />
             <VideoContent results={results} setModal={activateModal}/>
-            <ContentModal active={modalActive} setActive={setModalActive}>TEST</ContentModal>
+            <ContentModal active={modalActive} setActive={setModalActive}>
+                <div>
+                    <img className={s.content_portrait} src={poster_path?`${img_500}/${poster_path}`: unavailable} alt="poster"/>
+                    <img  className={s.content_modal_landscape} src={backdrop_path?`${img_500}/${backdrop_path}`: unavailableLandscape} alt="poster"/>
+                    <span className={s.content_modal_title}>
+                        {name || title}
+                    </span>
+                    <i> {tagline}</i>
+
+                </div>
+                <div className={s.content_modal_about}>
+                    <span className={s.content_modal_title}>
+                        {name || title}
+                        {firs_air_date || release_date}
+                    </span>
+                    <i> {tagline}</i>
+                    {overview}
+                </div>
+
+                {/*<ContentDescription/>*/}
+            </ContentModal>
             <Pagination
                 onPageChange = {changeCurrentPage}
                 currentPage={page}

@@ -28,7 +28,7 @@ export const Pagination: React.FC<PaginationPropsType> = ({onPageChange, portion
         pages.push(i)
     }
 
-    console.log(pages)
+
     return(
            <div className={s.block}>
                <button
