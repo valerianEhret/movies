@@ -21,17 +21,3 @@
     pointer-events: all;
 }
 
-.modalContent {
-    width: 40vw;
-    height: 80vw;
-    padding: 20px;
-    /*border-radius: 12px;*/
-    background-color: #ffffff;
-    transform: scale(0.5);
-    transition: 0.5s;
-}
-
-.modalContent.active {
-    transform: scale(1);
-    transition: 0.4s all;
-}

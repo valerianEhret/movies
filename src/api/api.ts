@@ -87,6 +87,9 @@ export type DataType = {
     vote_count: number
 }
 
+
+
+
 export const api = {
     fetchTrending: async (currentPage: number) => {
         const response = await instance.get<ResponseType>(`trending/all/day?api_key=${process.env.REACT_APP_API_KEY}&page=${currentPage}`)

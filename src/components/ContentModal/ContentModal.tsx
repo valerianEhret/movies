@@ -17,16 +17,11 @@ export const ContentModal: React.FC<ContentModalPropsType> = ({active, children,
     }
 
     const classForModal = active ? `${s.modal} ${s.active}` : `${s.modal}`;
-    const classForModalContent = active ? `${s.modalContent} ${s.active}` : `${s.modalContent}`;
 
 
     return (
         <div className={classForModal} onClick={setModalActive} >
-            <div
-                className={classForModalContent}
-                onClick={e => e.stopPropagation()}>
                 {children}
-            </div>
         </div>
     )
 }

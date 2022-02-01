@@ -3,5 +3,12 @@
     flex-direction: column;
     width: 500px;
     height: 500px;
-    background-color: #e50914;
+    background-color: rgb(20 20 20);
+}
+.tagline {
+    font-style: italic;
+}
+
+.description {
+
 }
